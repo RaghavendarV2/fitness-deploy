@@ -9,7 +9,7 @@ RUN npm install
 
 COPY . .
 
-RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build -- --configuration production
+RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build --prod
 
 # Stage 2: Serve with Nginx
 FROM nginx:alpine
