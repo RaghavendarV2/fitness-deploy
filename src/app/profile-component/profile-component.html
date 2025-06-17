@@ -1,0 +1,42 @@
+<h1> Profile Page </h1>
+
+<h2> Search a profile by ID </h2>
+<form (ngSubmit)="searchProfile()" searchForm="ngForm">
+    <label>Enter Profile Id: </label>
+    <input name="profileId" [(ngModel)]="searchId" required>
+    <button type="submit">Search</button>
+</form>
+<div *ngIf="searchAttempted">
+    <p><strong>Id: </strong>{{foundProfile?.id}}</p>
+    <p><strong>Age: </strong>{{foundProfile?.age}}</p>
+    <p><strong>Height: </strong>{{foundProfile?.height}}</p>
+    <p><strong>Weight: </strong>{{foundProfile?.weight}}</p>
+</div>
+
+<hr>
+
+<h2>Edit a profile by User</h2>
+<form (ngSubmit)="editAProfileByUserId()" editForm="ngForm">
+
+    <form (ngSubmit)="preLoadDetails()" preload="ngForm">
+        <label>Enter User Id: </label>
+        <input name="userId" [(ngModel)]="editUserId" required>
+        <button type="submit">Load old profile</button>    
+    </form>
+
+    <label>Enter new Age : </label>
+    <input name="newAge" [(ngModel)]="editProfile.editAge" required placeholder="{{currentProfile.editAge}}"> <br />
+
+    <label>Enter new Height: </label>
+    <input name="newHeight" [(ngModel)]="editProfile.editHeight" required placeholder="{{currentProfile.editHeight}}"> <br />
+
+    <label>Enter new Weight: </label>
+    <input name="newWeight" [(ngModel)]="editProfile.editWeight" required placeholder="{{currentProfile.editWeight}}"> <br />
+
+    <button type="submit">Edit</button>
+</form>
+<p>{{successMsg}}</p>
+
+
+
+

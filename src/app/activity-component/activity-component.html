@@ -1,0 +1,54 @@
+<h1>Activities Page</h1>
+
+<h2> Add a activity with User Id: </h2>
+<form (ngSubmit)="createActivity()" addForm="ngForm">
+    <label> Enter number of steps : </label>
+    <input name="steps" [(ngModel)]="newActivity.steps" required> <br />
+
+    <label> Enter Distance : </label>
+    <input name="distance" [(ngModel)]="newActivity.distance" required> <br />
+
+    <label> Calories burned : </label>
+    <input name="calburned" [(ngModel)]="newActivity.caloriesBurned" required> <br />
+
+    <label> Enter User ID : </label>
+    <input name="userID" [(ngModel)]="newActivity.userId" required> <br />
+
+    <button type="submit"> Add Activity </button>
+</form>
+<p>{{addSuccess}}</p>
+
+<hr>
+
+<h2> Get Activities by User ID</h2>
+<form (ngSubmit)="getAllActivityByUser()" filterForm="ngForm">
+    <label>Enter User ID:</label>
+    <input name="userID" [(ngModel)]="filterUserId" required>
+    <button type="submit"> Search </button>
+</form>
+
+<ng-container *ngIf="getAllFlag; else elseTemplate">
+    <table border="1" [cellPadding]="4">
+        <thead>
+            <th> ID </th>
+            <th> Steps </th>
+            <th> Distance </th>
+            <th> Calories burned </th>
+            <th> Date </th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let activity of filteredList">
+                <td>{{activity.id}}</td>
+                <td>{{activity.steps}}</td>
+                <td>{{activity.distance}}</td>
+                <td>{{activity.caloriesBurned}}</td>
+                <td>{{activity.date}}</td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>
+<ng-template #elseTemplate>
+    <p>{{getAllMsg}}</p>
+</ng-template>
+
+

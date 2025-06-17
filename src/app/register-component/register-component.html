@@ -1,0 +1,30 @@
+<h1>Register a new User</h1>
+
+<form (ngSubmit)="registerUser()" registerForm="ngForm">
+    <label>Enter username: </label>
+    <input name="username" [(ngModel)]="newUser.username" required> <br />
+
+    <label>Enter email: </label>
+    <input name="email" [(ngModel)]="newUser.email" required> <br />
+
+    <label>Enter password: </label>
+    <input name="password" [(ngModel)]="newUser.password" required> <br />
+
+    <label>Enter Age: </label>
+    <input name="age" [(ngModel)]="newUser.profile.age" required> <br />
+
+    <label>Enter Height: </label>
+    <input name="height" [(ngModel)]="newUser.profile.height" required> <br />
+
+    <label>Enter Weight: </label>
+    <input name="weight" [(ngModel)]="newUser.profile.weight" required> <br />
+
+    <button type="submit">Register!</button>
+</form>
+
+<div *ngIf="registersuccess">
+    <span>Registration Success</span>
+        <ul>
+            <a href="/landing">User Home page</a>
+    </ul>
+</div>

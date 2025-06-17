@@ -1,0 +1,47 @@
+<h1> Goals Page</h1>
+
+<h2> Add a goal for a user </h2>
+<form (ngSubmit)="addGoalsForAUser()" addForm="ngForm">
+    <label>Enter User's Id to Add goal:</label>
+    <input name="uId" [(ngModel)]="UserIdForAddGoal" required> <br />
+
+    <label>Enter Target Steps:</label>
+    <input name="tgtStep" [(ngModel)]="newGoal.targetSteps" required> <br />
+
+    <label>Enter Target Calories:</label>
+    <input name="tgtCal" [(ngModel)]="newGoal.targetCalories" required> <br />
+
+    <button type="submit">Add Goal</button>
+</form>
+<ng-container *ngIf="addFlag; else elseTemplate">
+    <p>{{addMsg}}</p>
+</ng-container>
+<ng-template #elseTemplate>
+    <p>{{addMsg}}</p>
+</ng-template>
+
+
+<hr>
+
+<h2> Filter Goals By User</h2>
+<form (ngSubmit)="filterGoalsByUser()" filterForm="ngForm">
+    <label>Enter User Id: </label>
+    <input name="userID" [(ngModel)]="filterUserId" required> <br />
+    <button type="submit">Filter</button>
+</form>
+<div *ngIf="filteredList.length > 0">
+    <table border="1" [cellPadding]="3">
+        <thead>
+            <th>ID</th>
+            <th>Target Steps</th>
+            <th>Target Calories</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let goal of filteredList">
+                <td>{{goal.id}}</td>
+                <td>{{goal.targetSteps}}</td>
+                <td>{{goal.targetCalories}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

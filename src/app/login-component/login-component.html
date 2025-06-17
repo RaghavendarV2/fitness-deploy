@@ -1,0 +1,22 @@
+<h1>Login here!</h1>
+
+<form (ngSubmit)="tryToLogin()" loginform="ngForm">
+    <label>Enter Username: </label>
+    <input name="Username" [(ngModel)]="loginUser.username" required><br />
+
+    <label>Enter Email: </label>
+    <input name="email" [(ngModel)]="loginUser.email" required><br />
+
+    <label>Enter Password: </label>
+    <input name="password" [(ngModel)]="loginUser.password" required><br />
+
+    <button type="submit">Login</button>
+</form>
+
+
+<ng-container *ngIf="UserFlag; else elseTemplate">
+    <a href="/profile">Go to profile</a>
+</ng-container>
+<ng-template #elseTemplate>
+    <p>Enter Valid credentials</p>
+</ng-template>
