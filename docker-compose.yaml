@@ -1,8 +1,5 @@
-version: "3.8"
 services:
   frontend:
-    build: .
-    container_name: fitness-frontend
+    build: ./fitnessFrontend
     ports:
       - "80:80"
-    restart: unless-stopped
