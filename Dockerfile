@@ -14,7 +14,7 @@ RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build -- --configuration pr
 # Stage 2: Serve with Nginx
 FROM nginx:alpine
 
-COPY --from=build /app/dist/fitnessFrontend /usr/share/nginx/html
+COPY --from=build /app/dist/fitnessFrontend/browser /usr/share/nginx/html
 
 EXPOSE 80
 
